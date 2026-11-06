@@ -20,7 +20,16 @@ export function createApp() {
   // In-memory store for now — will be replaced by a real database later
   const waitlist = new Set();
 
-  app.use(helmet());
+  app.use(
+    helmet({
+      contentSecurityPolicy: {
+        // Site is served over plain HTTP for now (no SSL yet). Without this, browsers
+        // try to load JS/CSS over HTTPS and the page stays blank.
+        // Remove this line once HTTPS is set up.
+        directives: { upgradeInsecureRequests: null },
+      },
+    }),
+  );
   app.use(cors());
   app.use(express.json());
   if (process.env.NODE_ENV !== 'test') {
