@@ -1,0 +1,31 @@
+@import 'tailwindcss';
+
+@theme {
+  --font-sans: 'Inter Variable', ui-sans-serif, system-ui, sans-serif;
+  --color-ink: #0b1020;
+  --color-ink-2: #111831;
+  --color-card: #151d3b;
+  --color-line: #243058;
+  --color-muted: #9aa3c7;
+  --color-brand: #6c63ff;
+  --color-brand-2: #00d4ff;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  @apply bg-ink text-slate-100 antialiased;
+}
+
+@utility text-gradient {
+  background: linear-gradient(135deg, var(--color-brand), var(--color-brand-2));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+@utility bg-gradient-brand {
+  background: linear-gradient(135deg, var(--color-brand), var(--color-brand-2));
+}
